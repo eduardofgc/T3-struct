@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <title>ResumeFlix</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+
+      @keyframes fadeSlideDown {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fadeSlideDown {
+        animation: fadeSlideDown 0.6s ease forwards;
+      }
+    </style>
+  </head>
+  
+  <body class="bg-black text-white flex flex-col items-center justify-center min-h-screen">
+
+    <h1 class="text-6xl font-bold mb-4">ResumeFlix</h1>
+    <label class="block text-sm font-medium text-gray-400 mb-8">
+      Site de leitura de resumo de filmes
+    </label>
+
+    <div id="movieText" class="hidden text-lg text-center max-w-xl">
+      <p>Após entulhar a Terra de lixo e poluir a atmosfera com gases tóxicos, a humanidade deixou o planeta e passou a viver em uma gigantesca nave. O plano era que o retiro durasse alguns poucos anos, com robôs sendo deixados para limpar o planeta. WALL-E é o último destes robôs, e sua vida consiste em compactar o lixo existente no planeta. Até que um dia surge repentinamente uma nave, que traz um novo e moderno robô: Eva. A princípio curioso, WALL-E se apaixona e resolve segui-la por toda a galáxia.</p>
+    </div>
+
+    <button id="wallEButton" class="fixed bottom-6 left-6">
+      <img src="wall-e.jpg" class="w-24 cursor-pointer hover:scale-105 transition-transform">
+    </button>
+
+    <script>
+      const button = document.getElementById('wallEButton');
+      const text = document.getElementById('movieText');
+
+      button.addEventListener('click', () => {
+
+        if (text.classList.contains('hidden')) {
+          text.classList.remove('hidden');
+          text.classList.add('animate-fadeSlideDown');
+        } 
+        else {
+
+          text.classList.add('hidden');
+          text.classList.remove('animate-fadeSlideDown');
+        }
+      });
+
+    </script>
+
+  </body>
+</html>
