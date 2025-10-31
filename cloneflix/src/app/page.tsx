@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect, FormEvent } from "react";
 
-// Interface para definir sobre o Filme
 interface Movie {
   id: number;
   title: string;
@@ -11,7 +10,6 @@ interface Movie {
   release_date: string;
 }
 
-// --- Componentes de Ícones SVG (para evitar dependências) ---
 const StarIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -40,10 +38,8 @@ const CloseIcon = () => (
   </svg>
 );
 
-// Página Principal
 export default function HomePage() {
-  // API - Configurações
-  const API_KEY = "e5919b7f1e1089a4e65381cfa72b2969"; // Sua chave da API
+  const API_KEY = "e5919b7f1e1089a4e65381cfa72b2969";
   const BASE_URL = "https://api.themoviedb.org/3";
   const IMG_BASE_URL = "https://image.tmdb.org/t/p/w500";
   const popularMoviesURL = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=pt-BR`;
@@ -99,7 +95,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gray-900 font-sans text-white">
-      {/* Header */}
+
       <header className="sticky top-0 z-40 bg-gray-900/80 shadow-lg backdrop-blur-md">
         <nav className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-4 sm:flex-row sm:px-6 lg:px-8">
           <h1 className="text-3xl font-bold tracking-wider text-red-600">
@@ -117,11 +113,9 @@ export default function HomePage() {
         </nav>
       </header>
 
-      {/* Conteúdo Principal */}
       <main className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <h2 className="mb-6 text-2xl font-semibold">{sectionTitle}</h2>
 
-        {/* Grid de Filmes */}
         {isLoading ? (
           <div className="col-span-full text-center text-lg">Carregando...</div>
         ) : error ? (
@@ -164,20 +158,17 @@ export default function HomePage() {
         )}
       </main>
 
-      {/* Modal para Detalhes do Filme */}
       <div
         className={`fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm transition-opacity duration-300 ${
           selectedMovie ? "visible opacity-100" : "invisible opacity-0"
         }`}
-        onClick={closeModal} // Fecha ao clicar no fundo
+        onClick={closeModal} 
       >
-        {/* Conteúdo do Modal */}
         {selectedMovie && (
           <div
             className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-lg bg-gray-900 shadow-2xl"
             onClick={(e) => e.stopPropagation()} // Impede de fechar ao clicar no conteúdo
           >
-            {/* Botão de Fechar */}
             <button
               onClick={closeModal}
               className="absolute top-3 right-3 z-10 text-gray-400 transition-colors hover:text-white"
@@ -186,7 +177,6 @@ export default function HomePage() {
               <CloseIcon />
             </button>
 
-            {/* Corpo do Modal */}
             <div className="flex flex-col md:flex-row">
               <img
                 src={
