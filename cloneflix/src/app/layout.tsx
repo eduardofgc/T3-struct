@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="">
         {" "}
-        {/* <-- LIMPE AS CLASSES AQUI */}
+
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
